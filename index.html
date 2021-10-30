@@ -22,7 +22,7 @@
     </div>
 
 
-    <div class="main">
+    <div id="mainContent" class="main">
         <h2>Become a BBQ master! </h2>
         <p>Register Today</p>
         <p>BBQ isn't just standing in front of your grill with it on full blast and hoping for the best. It's an
@@ -30,14 +30,36 @@
             One way to speed up the process is to learn from the best. You can do just that by signing up for this
             free
             webinar!</p>
-        <form class="email-collector">
-            <input class="fname" type="text" placeholder="First Name" required>
-            <input class="email" type="email" placeholder="Email" required>
-            <button class="btn btn-primary">REGISTER</button>
+        <form id="email" class="email-collector" method="post">
+            <input class="fname" type="text" placeholder="First Name" name="fName" required>
+            <input class="email" type="email" placeholder="Email" name="email" required>
+            <button class="btn btn-primary" type="submit">REGISTER</button>
         </form>
         <p class="fine-print">We'll never share your information without your permission</p>
     </div>
 
+    <script>
+        let emailCollector = document.getElementById('email');
+        emailCollector.addEventListener('submit', e => {
+            e.preventDefault();
+
+            console.log("The event is firing!")
+            let myFormData = new FormData(e.target)
+
+            let userName = myFormData.get('fName')
+            let updateContent = `
+            <h2>Congratulations, ${userName}!</h2>
+
+            <p>You're on your way to becoming a BBQ Master!</p>
+
+            <p class="fine-print">We'll never share your information without your permission</p>
+            `
+
+            let mainContent = document.getElementById('mainContent')
+            mainContent.innerHTML = updateContent
+
+        })
+    </script>
 
 </body>
 
