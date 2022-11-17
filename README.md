@@ -1,4 +1,4 @@
-# Responsive Layout Practive (Scrimba Scourse)
+# Responsive Layout Practive
 
 Analyze the [markUp] and put into practice.
 
